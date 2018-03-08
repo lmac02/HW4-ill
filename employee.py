@@ -6,7 +6,7 @@ from datetime import datetime as dt
 
 class employee(person):
 
-	def __init(self):
+	def __init__(self):
 		person.__init__(self)
 		self.employee_permissions = True
 
