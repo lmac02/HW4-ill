@@ -1,4 +1,4 @@
-from employee import employee
+from employee import *
 
 class manager(employee):
 
@@ -7,7 +7,7 @@ class manager(employee):
 		self.manager_permissions = True
 
 	def show_customer_info(self, other):
-		print('Customer: {}\nD.O.B: {}/{}/{}\nAddress: {}\nSocial Security Number: {}\nAccount Number: {}\nRoutingNumber: {}\nBalance: {}'.format(other.name, other.birthdate.month, other.birthdate.day, other.birthdate.year, other.address, other._person__ssn, str(other.account_number).zfill(12), other.routing_number, other.balance))
+		print('\nCustomer: {}\nD.O.B: {}/{}/{}\nAddress: {}\nSocial Security Number: {}\nAccount Number: {}\nRoutingNumber: {}\nBalance: {}'.format(other.name, other.birthdate.month, other.birthdate.day, other.birthdate.year, other.address, other._person__ssn, str(other.account_number).zfill(12), other.routing_number, other.balance))
 
 	def see_customers(self):
 		for customer in person.customer_list:
