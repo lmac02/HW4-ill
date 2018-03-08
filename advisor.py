@@ -1,4 +1,5 @@
 from employee import *
+import random as r
 
 class advisor(employee):
 
@@ -38,21 +39,64 @@ class advisor(employee):
 			print('\n    Okay. If you reconsider, please come back and we can talk again.')
 
 	def __open_investment_account(self, other):
-		print('\n    To open an investment account, you must have at least $1,000 in your account.', end='')
-		if other.balance < 10000:
-			print('\n    Right now, it looks like you don\'t have enough to open an investment account with us. Once you accumulate more funds, please come back and we will talk more about your investment options.')
+		
+		if other.balance < 1000:
+			print('\n    To open an investment account, you must have at least $1,000 in your account.')
+			print('\n\n    Right now, it looks like you don\'t have enough to open an investment account with us. Once you accumulate more funds, please come back and we will talk more about your investment options.')
 		else:
-			print('\n    Okay, {}. So right now, we have three investment options for you to consider. Our mutual fund is doing great right now. It is the safest investment for you to make.\nOr I could get you in on our precious metal & gem fund. Yeah, it is a little riskier, but the potential reward is even greater.\n\nYou ever heard of bitcoin? What about XRP\'s Ripple? Well if you are into cryptocurrencies, we can help you invest there, too.\n\nThe choice is yours, {}.'.format(other.first_name, other.first_name))
-			choice = input('\n\nEnter (1) to invest in our mutual fund.\nEnter (2) to invest in our precious metal & gem fund.\nEnter (3) to invest in our special blend of cryptocurrencies.\n\nEnter (4) if you don\'t want to invest with us anymore.\n\nEntry: ')
+			print('\n    Okay, {}, so you would like to invest. Good idea in today\'s world. Right now, we have three investment options for you to consider. Our mutual fund is doing great these days. It is the safest investment for you to make.\nOr I could get you in on our precious metal & gem fund. Yeah, it is a little riskier, but the potential reward is even greater.\n\nYou ever heard of bitcoin? What about XRP\'s Ripple? Well if you are into cryptocurrencies, we can help you invest in those, too.\n\nThe choice is yours, {}.'.format(other.first_name, other.first_name))
+			choice = input('\n\nEnter (1) to invest in our mutual fund.\nEnter (2) to invest in our precious metal & gem fund.\nEnter (3) to invest in our special blend of cryptocurrencies.\nEnter (4) if you don\'t want to invest with us anymore.\n\nEntry: ')
 			while choice not in ['1', '2', '3', '4']:
 				choice = input('\n(1) Mutual Fund\n\n(2)Precious metal & gem\n\n(3)Cryptocurrencies\n\n(4)Nevermind\n\nEntry: ')
+			
 			if choice == '1':
+				print('\n    Great choice.')
+			elif choice == '2':
+				print('\n    You won\'t regret this.')
+			elif choice == '3':
+				print('\n    Rolling the dice, huh? Hopefully it pays off.')
+			elif choice == '4':
+				print('\n    Okay, {}. Well, feel free to come back if you change your mind.'.format(other.first_name))
+
+			if choice != '4':
+				amount = input('\n\n    How much would you like to add to your investment account right now?\n    You must deposit at least $500.\n\nDeposit: $ ')
+			
+			done = False
+
+			if choice == '4':
+				done = True
+
+			while not done:
+				try:
+					amount = float(amount)
+					if amount >= 500:
+						done = True
+					else:
+						amount = input('\nDeposit must be at least $500.\n\nDeposit: $')
+				except:
+					amount = input('\nEnter a valid amount over $500 to invest.\n\nDeposit: $')
+
+			if choice == '1':
+				return_rate = r.normalvariate(1.06, 0.025)
+				other.investment_acct_balance += amount
+
+			elif choice == '2':
+				return_rate = r.normalvariate(1.08, 0.04)
+				other.investment_acct_balance += amount
+
+			elif choice == '3':
+				return_rate = r.normalvariate(1.14, 0.09)
+				other.investment_acct_balance += amount
+
+			elif choice == '4':
+				print('\n\n    Goodbye!')
+
+######Finish this fcn########################
+############################################################
 
 
 
-
-				
-	def give_advice(self, other):
+	def GiveAdvice(self, other):
 		print('\n    Hello, {}. I am your advisor {} {}.'.format(other.first_name, self.first_name, self.last_name))
 		entry = input('\n\n     I am here to advise you on your financial options and goals. What would you like to discuss today?\n\nEnter (1) to discuss a loan.\nEnter (2) to open an investment account.\n\nEntry: ')
 
@@ -66,7 +110,7 @@ class advisor(employee):
 				elif y_n.lower() in ['no', 'n']:
 					open_invstmnt_acct = input('\n    Okay, so you would like to open an investment account then? (yes/no): ')
 					if open_invstmnt_acct.lower() in ['yes', 'y']:
-						self.__open_investment_account
+						self.__open_investment_account(other)
 						done = True
 					else:
 						print('\n    Nice seeing you today, {}.'.format(other.first_name))

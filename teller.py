@@ -4,8 +4,8 @@ class teller(employee):
 	def __init__(self):
 		employee.__init__(self)
 		
-	def serveCustomer(self, other):
-		print('\n\n    Hello there, {}! Hope you are doing well!\n    How can I help you today?'.format(other.first_name))
+	def ServeCustomer(self, other):
+		print('\n\n    Hello there, {}! Hope you are doing well!\n\n    How can I help you today?'.format(other.first_name))
 		
 		done = False
 		while not done:
@@ -32,7 +32,8 @@ class teller(employee):
 				else:
 					done = True
 			elif choice == '4':
+				print('\nGoodbye!')
 				done = True
 			else:
 				choice = input('\nEnter (1) to check balance  \n\nEnter (2) to make a deposit  \n\nEnter (3) to make a withdrawal  \n\nEnter (4) to say goodbye \n\nEntry: ')
-			print('Have a nice day!')
+			print('\nHave a nice day!')

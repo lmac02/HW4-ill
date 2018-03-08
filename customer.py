@@ -73,7 +73,7 @@ class customer(person):
 	def __check_balance(self):
 		print('Balance: $%.2f' % self.balance)
 
-	def check_outstanding_balance(self):
+	def CheckOutstandingBalance(self):
 		print('Outstanding: ${}'.format(format(self.outstanding_balance, '.2f')))
 
 
