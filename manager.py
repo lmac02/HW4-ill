@@ -1,4 +1,4 @@
-from employee import employee
+from employee import *
 
 class manager(employee):
 
