@@ -1,4 +1,5 @@
 from employee import employee
+import random as r
 
 class advisor(employee):
 
