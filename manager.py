@@ -24,3 +24,13 @@ class manager(employee):
 			elif y_n.lower() in ['no', 'n']:
 				print('\nNot deleted.')
 				done = True
+
+	def SeeDebtsToBank(self):
+		total = 0
+		count = 0
+		for customer_ in person.customer_list:
+			if customer_.outstanding_balance > 0:
+				count += 1
+				total += customer_.outstanding_balance
+
+		print('\n\n    ${} is owed to the bank by {} customers.'.format(total, count))

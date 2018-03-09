@@ -9,7 +9,7 @@ class teller(employee):
 		
 		done = False
 		while not done:
-			choice = input('\nEnter (1) to check balance  \n\nEnter (2) to make a deposit  \n\nEnter (3) to make a withdrawal  \n\nEnter (4) to say goodbye \n\nEntry: ')
+			choice = input('\nEnter (1) to check balance  \n\nEnter (2) to make a deposit  \n\nEnter (3) to make a withdrawal  \n\nEnter (4) to make a payment on your outstanding balance \n\nEnter (5) to say goodbye\n\nEntry: ')
 			if choice == '1':
 				other._customer__check_balance()
 				y_n = input('\nIs that all for today? (yes/no): ')
@@ -32,6 +32,8 @@ class teller(employee):
 				else:
 					done = True
 			elif choice == '4':
+				print('\n\n    Your current outstanding balance is ${}.'.format(format(other.outstanding_balance, '.2f')))
+			elif choice == '5':
 				print('\nGoodbye!')
 				done = True
 			else:
