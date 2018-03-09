@@ -1,4 +1,4 @@
-from employee import employee
+from employee import *
 
 class manager(employee):
 
@@ -6,14 +6,14 @@ class manager(employee):
 		employee.__init__(self)
 		self.manager_permissions = True
 
-	def show_customer_info(self, other):
-		print('Customer: {}\nD.O.B: {}/{}/{}\nAddress: {}\nSocial Security Number: {}\nAccount Number: {}\nRoutingNumber: {}\nBalance: {}'.format(other.name, other.birthdate.month, other.birthdate.day, other.birthdate.year, other.address, other._person__ssn, str(other.account_number).zfill(12), other.routing_number, other.balance))
+	def showCustomerInfo(self, other):
+		print('\nCustomer: {}\nD.O.B: {}/{}/{}\nAddress: {}\nSocial Security Number: {}\nAccount Number: {}\nRoutingNumber: {}\nBalance: {}'.format(other.name, other.birthdate.month, other.birthdate.day, other.birthdate.year, other.address, other._person__ssn, str(other.account_number).zfill(12), other.routing_number, other.balance))
 
-	def see_customers(self):
+	def seeCustomers(self):
 		for customer in person.customer_list:
 			print('\nName: {}      Acct #: {}'.format(customer.name, str(customer.account_number).zfill(12)))
 
-	def delete_customer(self, other):
+	def deleteCustomer(self, other):
 		done = False
 		while not done:
 			y_n = input('\nDelete {}? (yes/no): '.format(other.name))
@@ -24,3 +24,16 @@ class manager(employee):
 			elif y_n.lower() in ['no', 'n']:
 				print('\nNot deleted.')
 				done = True
+
+	def seeDebtsToBank(self):
+		total = 0
+		count = 0
+		for customer_ in person.customer_list:
+			if customer_.outstanding_balance > 0:
+				count += 1
+				total += customer_.outstanding_balance
+
+		print('\n\n    ${} is owed to the bank by {} customers.'.format(total, count))
+
+	def talk(self):
+		print("Hello! I'm {}. I am a manager at I.L.L. & sons. How may I help you?".format(self.first_name))

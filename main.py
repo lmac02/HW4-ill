@@ -1,9 +1,9 @@
 from person import *
-#from person import make_routingNumber
-#from person import make_ssn
-#import random as r
-#from datetime import datetime as dt
-from customer import customer
-from employee import employee
-from manager import manager
-from advisor import advisor
+from customer import *
+from employee import *
+from manager import *
+from advisor import *
+from teller import *
+
+print('\n\n      Create a customer, teller, advisor, or manager object. Ex: name = customer()\n\n')
+
